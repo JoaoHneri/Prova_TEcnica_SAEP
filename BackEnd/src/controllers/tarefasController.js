@@ -24,10 +24,16 @@ const getClientes = async (req, res)=>{
     return res.status(200).json(clientes)
 };
 
+const updateQuantidade = async (req, res)=>{
+    const {id} = req.params;
+    const quantidade = await tarefasModel.updateQuantidade(id);
+    return res.status(200).json(quantidade);
+};
 
 module.exports = {
     getAlocacao,
     getAutoAloc,
     getConcessionarias,
-    getClientes
+    getClientes,
+    updateQuantidade
 };

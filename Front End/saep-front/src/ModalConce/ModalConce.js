@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+import { useNavigate } from 'react-router-dom';
 
 const ModalConce = () => {
 const [concessionaria, setConcessionaria] =useState([]);
 const [clientes, setClientes] = useState([]);
-
 const {modelo,id, area} = useParams();
-
-
+const MySwal = withReactContent(Swal)
+const Navigate = useNavigate();
 const getConcessionaria = async () => {
     try {
       const response = await fetch(`http://localhost:3333/concessionaria/${id}/${area}`);
@@ -31,8 +33,30 @@ const getConcessionaria = async () => {
         getConcessionaria();
         getClientes();
       }, [id]);
-    
+      
+    const VendaUpdate = async () => {
+        try {
+          const response = await fetch(`http://localhost:3333/quantidade/${id}`);
+          const data = await response.json();
+        } catch (error) {
+          console.error('Error fetching data:', error);
+        }
+    }
 
+    const redirect = async () => {
+        VendaUpdate();
+        MySwal.fire({
+            title: "Vendido!",
+            text: "Automovel Vendido com sucesso",
+            icon: "success",
+            confirmButtonText: "Ok",
+            didOpen: () => {
+              // `MySwal` is a subclass of `Swal` with all the same instance & static methods
+              MySwal.stopTimer();
+            },
+          });
+          Navigate("/");
+    };
 
 
 
@@ -81,6 +105,7 @@ const getConcessionaria = async () => {
               className="bg-red-500 text-white active:bg-red-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
               type="button"
               style={{ transition: 'all .15s ease' }}
+              onClick={redirect}
             >
               Confirmar
             </button>

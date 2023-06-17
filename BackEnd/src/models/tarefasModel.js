@@ -20,10 +20,16 @@ const getClientes = async () => {
     return clientes;
 };
 
+const updateQuantidade = async (id) => {
+    const [quantidade] = await connection.execute('UPDATE alocacao SET quantidade = (quantidade - 1) WHERE automovel  = ?',[id]);
+    return quantidade;
+};
+
 
 module.exports =  {
     getAlocacao,
     getAutoAloc,
     getConcessionarias,
-    getClientes
+    getClientes,
+    updateQuantidade
 };
