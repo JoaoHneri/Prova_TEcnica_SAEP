@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { BiHomeAlt } from "react-icons/bi";
-import './Modal.css'
+import "./Modal.css";
 
 const Modal = () => {
   const { id } = useParams();
@@ -48,28 +48,34 @@ const Modal = () => {
                 </tr>
               </thead>
               <tbody>
-                {tableData.map((item) => (
-                  <tr key={id}>
-                    <td className="border border-gray-300 px-4 py-2">
-                      {item.modelo}
-                    </td>
-                    <td className="border border-gray-300 px-4 py-2">
-                      {item.preco}
-                    </td>
-                    <td className="border border-gray-300 px-4 py-2 text-center">
-                      {item.quantidade}
-                    </td>
-                    <td className="border border-gray-300 px-4 py-2 ">
-                      <Link
-                        to={`/concessionaria/${item.modelo}/${item.id}/${item.area}`}
-                      >
-                        <button className="botao hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                          Vender
-                        </button>
-                      </Link>
-                    </td>
-                  </tr>
-                ))}
+                {tableData.map((item) => {
+                  if (item.quantidade <= 0) {
+                    return null; // Ignorar itens com quantidade zero ou menor
+                  }
+
+                  return (
+                    <tr key={item.id}>
+                      <td className="border border-gray-300 px-4 py-2">
+                        {item.modelo}
+                      </td>
+                      <td className="border border-gray-300 px-4 py-2">
+                        {item.preco}
+                      </td>
+                      <td className="border border-gray-300 px-4 py-2 text-center">
+                        {item.quantidade}
+                      </td>
+                      <td className="border border-gray-300 px-4 py-2">
+                        <Link
+                          to={`/concessionaria/${item.modelo}/${item.id}/${item.area}`}
+                        >
+                          <button className="botao hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                            Vender
+                          </button>
+                        </Link>
+                      </td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           )}
