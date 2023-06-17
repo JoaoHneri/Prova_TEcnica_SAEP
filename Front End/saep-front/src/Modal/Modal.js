@@ -16,7 +16,7 @@ const [tableData, setTableData] = useState([]);
     try {
       const response = await fetch(`http://localhost:3333/alocacao/${id}`);
       const data = await response.json();
-      setTableData(data[0]);
+      setTableData(data);
     } catch (error) {
       console.error('Error fetching data:', error);
     }
@@ -48,9 +48,11 @@ const [tableData, setTableData] = useState([]);
             <td className="border border-gray-300 px-4 py-2">{item.modelo}</td>
               <td className="border border-gray-300 px-4 py-2">{item.preco}</td>
               <td className="border border-gray-300 px-4 py-2">
+                <Link to={`/concessionaria/${item.modelo}/${item.id}/${item.area}`}>
                 <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                   Vender
                 </button>
+                </Link>
               </td>
           </tr>
         ))}

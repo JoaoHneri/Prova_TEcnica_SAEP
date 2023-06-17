@@ -13,8 +13,21 @@ const getAutoAloc = async (req, res)=>{
     
 };
 
+const getConcessionarias = async (req, res)=>{
+    const {id, area} = req.params;
+    const concessionaria = await tarefasModel.getConcessionarias(id,area);
+    return res.status(200).json(concessionaria)
+};
+
+const getClientes = async (req, res)=>{
+    const clientes = await tarefasModel.getClientes();
+    return res.status(200).json(clientes)
+};
+
 
 module.exports = {
     getAlocacao,
     getAutoAloc,
+    getConcessionarias,
+    getClientes
 };
