@@ -1,0 +1,8 @@
+.botao{
+    background-color: #7814FF;
+    transition: 1s;
+}
+
+.botao:hover{
+    background-color: #0000FF;
+}
