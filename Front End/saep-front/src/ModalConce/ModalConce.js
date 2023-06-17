@@ -40,6 +40,16 @@ const getConcessionaria = async () => {
           const data = await response.json();
         } catch (error) {
           console.error('Error fetching data:', error);
+          MySwal.fire({
+            title: "Erro!",
+            text: "O automovel não foi vendido com sucesso",
+            icon: "success",
+            confirmButtonText: "Ok",
+            didOpen: () => {
+              // `MySwal` is a subclass of `Swal` with all the same instance & static methods
+              MySwal.stopTimer();
+            },
+        });
         }
     }
 

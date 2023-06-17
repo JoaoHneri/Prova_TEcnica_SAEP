@@ -4,7 +4,6 @@ import {BiHomeAlt} from 'react-icons/bi'
 
 const Modal = () => {
 const {id} = useParams();
-console.log(id)
 const [tableData, setTableData] = useState([]);
 
 
@@ -22,7 +21,6 @@ const [tableData, setTableData] = useState([]);
     }
   };
 
-  
 
 
     
@@ -34,8 +32,7 @@ const [tableData, setTableData] = useState([]);
             <h1 className="text-3xl font-bold mb-4"><BiHomeAlt/></h1>
         </Link>
         <h1 className="flex flex-col text-3xl font-bold mb-4 content-center items-center">Área {id}</h1>
-
-        <table className="w-full border border-gray-300">
+        {tableData.length == 0 ? <h1>Não possui automoveis nessa área</h1> : <table className="w-full border border-gray-300">
           <thead>
             <tr>
               <th className="border border-gray-300 px-4 py-2">Modelo</th>
@@ -59,7 +56,7 @@ const [tableData, setTableData] = useState([]);
           </tr>
         ))}
           </tbody>
-        </table>
+        </table> }
       </div>
     </div>
     </div>
