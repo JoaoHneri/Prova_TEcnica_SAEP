@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 import { useNavigate } from 'react-router-dom';
+import './ModalConce.css'
 
 const ModalConce = () => {
 const [concessionaria, setConcessionaria] =useState([]);
@@ -71,11 +72,11 @@ const getConcessionaria = async () => {
 
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center overflow-x-hidden overflow-y-auto outline-none focus:outline-none " >
+    <div className="fixed inset-0 z-50 flex items-center justify-center overflow-x-hidden overflow-y-auto outline-none focus:outline-none boxContainer" >
       <div className="relative w-auto max-w-3xl mx-auto my-6 w-full">
         <div className="relative flex flex-col w-full bg-white border-0 rounded-lg shadow-lg outline-none focus:outline-none">
           <div className="flex items-center justify-between p-5 border-b border-solid border-gray-300 rounded-t">
-          <h3  className="text-lg font-semibold">{modelo}</h3>
+          <h3  className="text-2xl font-semibold">{modelo}</h3>
           <Link to={'/'}>
           <button
               className="p-1 ml-auto bg-transparent border-0 text-black opacity-50 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
@@ -112,7 +113,7 @@ const getConcessionaria = async () => {
           </div>
           <div className="flex items-center justify-end p-6 border-t border-solid border-gray-300 rounded-b">
             <button
-              className="bg-red-500 text-white active:bg-red-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
+              className="text-white font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 btn"
               type="button"
               style={{ transition: 'all .15s ease' }}
               onClick={redirect}

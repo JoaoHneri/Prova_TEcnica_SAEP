@@ -1,13 +1,8 @@
-
-.botao{
+.btn{
     background-color: #7814FF;
     transition: 1s;
 }
 
-.boxContainer{
-    background-color: #707070;
-}
-
-.botao:hover{
+.btn:hover{
     background-color: #0000FF;
 }

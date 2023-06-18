@@ -22,15 +22,15 @@ const Modal = () => {
   };
 
   return (
-    <div>
-      <div className="flex flex-col items-center justify-center h-screen bg-gray-200">
+    <div className="">
+      <div className="flex flex-col items-center justify-center h-screen bg-neutral-200 boxContainer">
         <div className="bg-white p-10 rounded-lg shadow-lg">
           <Link to={`/`}>
             <h1 className="text-3xl font-bold mb-4">
               <BiHomeAlt />
             </h1>
           </Link>
-          <h1 className="flex flex-col text-3xl font-bold mb-4 content-center items-center">
+          <h1 className="flex flex-col text-3xl font-bold mb-4 content-center items-center text-font">
             Área {id}
           </h1>
           {tableData.length == 0 ? (
@@ -68,7 +68,7 @@ const Modal = () => {
                         <Link
                           to={`/concessionaria/${item.modelo}/${item.id}/${item.area}`}
                         >
-                          <button className="botao hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                          <button className="botao hover:bg-blue-700 text-white font-bold py-2 px-4 rounded botao">
                             Vender
                           </button>
                         </Link>

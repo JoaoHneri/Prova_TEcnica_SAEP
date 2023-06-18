@@ -1,7 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Carter+One&display=swap');
 .quadrado{
-    background-color: #7814FF;
+    background-color: #0000FF;
+    transition: all .2s ease-in-out;
 }
 
+.quadrado:hover { transform: scale(1.1); }
+
+
 .quadCinza{
+    background-color: #FFFFFF;
+    transition: all .2s ease-in-out;
+}
+.quadCinza:hover { transform: scale(1.1); }
+
+.boxContainer{
     background-color: #707070;
+}
+
+.text-prime{
+    font-family: 'Carter One', cursive;
+    color: #FFFFFF;
+
 }
